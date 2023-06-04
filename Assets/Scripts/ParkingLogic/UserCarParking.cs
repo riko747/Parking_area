@@ -29,6 +29,8 @@ namespace Assets.Scripts.ParkingLogic
         private void ParkUserCarToMall()
         {
             var availableSlots = _parking.ParkingSlots.Where(slot => !slot.SlotIsNotAvailable);
+
+            if (!availableSlots.Any()) return;
             var mallEntrance = _parking.ParkingSlots.First(slot => slot.SlotIsMallEntrance);
 
             var closestSlots = availableSlots
@@ -48,6 +50,8 @@ namespace Assets.Scripts.ParkingLogic
         private void ParkUserCarToPark()
         {
             var availableSlots = _parking.ParkingSlots.Where(slot => !slot.SlotIsNotAvailable);
+
+            if (!availableSlots.Any()) return;
             var parkEntrance = _parking.ParkingSlots.First(slot => slot.SlotIsParkEntrance);
 
             var closestSlots = availableSlots
